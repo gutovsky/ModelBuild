@@ -5,6 +5,12 @@ on:
       - main
     paths:
       - pipelines/**
+  workflow_dispatch:
+    branches:
+      - main
+    paths:
+      - pipelines/**
+
 env:
   AWS_REGION: us-east-1
   SAGEMAKER_PROJECT_NAME: ABIIv13
