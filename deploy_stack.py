@@ -65,19 +65,19 @@ if __name__ == "__main__":
     with open("endpoint-config-template.yml", "r") as f:
         template_body = f.read()
 
-    try:
-        cfn_client.create_stack(
-            StackName=stack_name,
-            TemplateBody=template_body,
-            Parameters=parameters,
-            Tags=tags,
-        )
-        logging.info("Creating a new stack...")
-    except cfn_client.exceptions.AlreadyExistsException:
-        cfn_client.update_stack(
-            StackName=stack_name,
-            TemplateBody=template_body,
-            Parameters=parameters,
-            Tags=tags,
-        )
-        logging.info("Updating existing stack...")
+    # try:
+    #     cfn_client.create_stack(
+    #         StackName=stack_name,
+    #         TemplateBody=template_body,
+    #         Parameters=parameters,
+    #         Tags=tags,
+    #     )
+    #     logging.info("Creating a new stack...")
+    # except cfn_client.exceptions.AlreadyExistsException:
+    cfn_client.update_stack(
+        StackName=stack_name,
+        TemplateBody=template_body,
+        Parameters=parameters,
+        Tags=tags,
+    )
+    logging.info("Updating existing stack...")
